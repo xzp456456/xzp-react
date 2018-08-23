@@ -1,0 +1,14 @@
+.list ul li{
+    list-style: none;
+    display: inline-block;
+    width: 75px;
+    height: 58px;
+}
+.list ul li img{
+   width: 60%;
+   margin: 0 auto;
+   display: block;
+}
+ul{
+    -webkit-padding-start: 0px;
+}

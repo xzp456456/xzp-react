@@ -1,0 +1,14 @@
+.SearchPage {
+    background-color: blueviolet;
+    padding: 8px 0;
+}
+.SearchPage input{
+    width: 80%;
+    height: 30px;
+    margin: 0px auto;
+    display: block;
+    border-radius:10px; 
+    text-align: center;
+    outline: none;
+    border: none;
+}
