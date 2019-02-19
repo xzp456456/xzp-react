@@ -1,32 +1,35 @@
 import 'isomorphic-fetch'
 import 'es6-promise'
 import qs from 'qs'
-export function Http_get(url,params){
-    return fetch(url+"?"+qs.stringify(params), {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json,text/plain,*/*'
+export function getAjax(url, params) {
+    return new Promise((resolve, reject) => {
+        fetch(url + "?" + qs.stringify(params), {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json,text/plain,*/*'
+            }
         }
-    }
-    ).then((res) => {
-        return res.json()
-    }).then((data) => {
-        console.log(data);
+        ).then((res) => {
+            resolve(res.data)
+        }).catch(err => {
+            reject(err);
+        })
     })
 }
-export function Http_post(url, params) {
-   return fetch(url,{
+export function postAjax(url, params) {
+    return new Promise((resolve, reject) => {
+        fetch(url, {
             method: 'POST',
-            headers:{
-                'Accept':'application/json,text/plain,*/*',
-                'Content-Type':'application/x-www-form-urlencoded'
+            headers: {
+                'Accept': 'application/json,text/plain,*/*',
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: qs.stringify(params)
         }
-        ).then((res) => {
-            
-          return res.json()
-        }).then((data)=>{
-            console.log(data);
+        ).then((data) => {
+            resolve(res.data);
+        }).catch((err) => {
+            reject(err);
         })
+    })
 }
