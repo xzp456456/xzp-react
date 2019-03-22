@@ -1,0 +1,57 @@
+@include:1;
+
+.banner{
+    width: 100%;
+    height: 483px*@include;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+.swiper-container {
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 999;
+}
+.banner{
+    display: block;
+}
+.m-banner{
+    display: none;
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1366px) {
+    @include:0.7;
+    .banner{
+        width: 100%;
+        height: 483px*@include;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .banner{
+        display: block;
+    }
+    .m-banner{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 750px) {
+        .banner{
+            display: none;
+        }
+        .m-banner{
+            display: block;
+        }
+        .m-banner{
+            clear: both;
+            width: 100%;
+            height: 4.866667rem;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+}

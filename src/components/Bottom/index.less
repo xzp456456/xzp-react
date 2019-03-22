@@ -1,0 +1,161 @@
+
+@include:1;
+
+.footer{
+    height:392px*@include;
+    background:rgba(28,28,28,1);
+    clear: both;
+}
+
+.row{
+    width: 1200px*@include;
+    margin: 0 auto;
+}
+
+.pd{
+    padding-top: 62px*@include;
+    img{
+        width: 151px*@include;
+        height: 50px*@include;
+    }
+}
+
+.line{
+    font-size:19px*@include;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(164,164,164,1);
+
+}
+
+.map{
+    width: 832px*@include;
+    height: 259px*@include;
+    margin-top: 49px*@include;
+    margin-left: 84px*@include;
+}
+
+.company{
+    font-size:15px*@include;
+font-family:MicrosoftYaHei;
+font-weight:400;
+color:rgba(99,99,99,1);
+padding-top: 34px*@include;
+}
+
+.mb-footer{
+    display: none;
+}
+.footer{
+    display: block;
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1366px) {
+    @include:0.7;
+    .footer{
+        height:392px*@include;
+        background:rgba(28,28,28,1);
+        clear: both;
+    }
+    
+    .row{
+        width: 1200px*@include;
+        margin: 0 auto;
+    }
+    
+    .pd{
+        padding-top: 62px*@include;
+        img{
+            width: 151px*@include;
+            height: 50px*@include;
+        }
+    }
+    
+    .line{
+        font-size:19px*@include;
+        font-family:MicrosoftYaHei;
+        font-weight:400;
+        color:rgba(164,164,164,1);
+    
+    }
+    
+    .map{
+        width: 832px*@include;
+        height: 259px*@include;
+        margin-top: 49px*@include;
+        margin-left: 84px*@include;
+    }
+    
+    .company{
+        font-size:15px*@include;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(99,99,99,1);
+    padding-top: 34px*@include;
+    }
+    .mb-footer{
+        display: none;
+    }
+    .footer{
+        display: block;
+    }
+}
+
+
+
+@media only screen and (min-width: 0px) and (max-width: 750px) {
+    
+.row{
+    width: 90%;
+    margin: 0 auto;
+}
+    .mb-footer{
+        display: block;
+        width:100%;
+        height:7.906667rem;
+        padding-top: .3rem;
+        background:rgba(28,28,28,1);
+    }
+    .footer{
+        display: none;
+    }
+
+    .mb-map{
+        width: 9.48rem;
+        height: 3.453333rem;
+        margin: 0 auto;
+
+    }
+    .inds-mb{
+        width: 2.8rem;
+            margin-right: 0.6rem;
+            display: inline-block;
+            margin-top: 0.4rem;
+    }
+    .mkdes{
+        width:8.5rem ;
+        margin: 0 auto;
+        margin-top: 1rem;
+    }
+
+    .mb-line{
+        float: left;
+        font-size:.253333rem;
+        font-family:MicrosoftYaHei;
+        font-weight:400;
+        color:rgba(164,164,164,1);
+    }
+    .mbcompany{
+        clear: both;
+        font-size:.15rem;
+        text-align: center;
+        font-family:MicrosoftYaHei;
+        font-weight:400;
+        color:rgba(99,99,99,1);
+    }
+    .bom-mb{
+        clear: both;
+        width: 100%;
+        height: 0.4rem;
+    }
+}

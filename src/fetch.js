@@ -1,16 +1,18 @@
 import 'isomorphic-fetch'
 import 'es6-promise'
 import qs from 'qs'
+const fetchURL = 'http://tyweb.yxsoft.net/'
+
 export function getAjax(url, params) {
     return new Promise((resolve, reject) => {
-        fetch(url + "?" + qs.stringify(params), {
+        fetch(fetchURL+url + "?" + qs.stringify(params), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json,text/plain,*/*'
             }
         }
         ).then((res) => {
-            resolve(res.data)
+            resolve(res.json())
         }).catch(err => {
             reject(err);
         })
@@ -18,16 +20,15 @@ export function getAjax(url, params) {
 }
 export function postAjax(url, params) {
     return new Promise((resolve, reject) => {
-        fetch(url, {
+        fetch(fetchURL+url, {
             method: 'POST',
             headers: {
-                'Accept': 'application/json,text/plain,*/*',
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: qs.stringify(params)
         }
-        ).then((data) => {
-            resolve(res.data);
+        ).then((res) => {
+            resolve(res.json())
         }).catch((err) => {
             reject(err);
         })

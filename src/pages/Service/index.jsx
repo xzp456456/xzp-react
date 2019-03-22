@@ -1,0 +1,65 @@
+import React,{Component} from 'react';
+import Header from '../../components/Header'
+import Banner from '../../components/Banner'
+import Bottom from '../../components/Bottom'
+import './index.less'
+import { postAjax } from '../../fetch'
+import * as api from '../../api'
+class Service extends Component{
+    state={
+        content:[]
+      }
+      constructor(){
+        super()
+      document.title="服务介绍"
+    }
+        getCulture(){
+          postAjax(api.content,{cate_id:8,lang:'zh'})
+          .then(res=>{
+              console.log(res);
+            this.setState({
+              content:res.data.item
+            })
+          })
+        }
+        componentWillMount(){
+          this.getCulture()
+        }
+    render(){
+        const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
+        let list = this.state.content;
+        let item = list.map((item,index)=>{
+            return(
+                <div className="li" key={index}>
+                <div className="left"><img src={item.file_url} alt=""/></div>
+                <div>
+                  <div className="left all">
+                  <div className="biaoti">{item.title}</div>
+                  <div className="desc">
+                    {item.desc1}
+                  </div>
+                  </div>
+                  
+                </div>
+            </div>
+            )
+        })
+        return(
+            <div>
+                <Header />
+                
+                <Banner children={IMG}></Banner>
+                <div className="mb-bdo"></div>
+                <div className="sach">
+                
+                        {item}
+                </div>
+                <div className="bom"></div>
+                <Bottom />
+            </div>
+            
+        )
+    }
+}
+
+export default Service;

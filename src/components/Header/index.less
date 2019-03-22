@@ -1,0 +1,275 @@
+@include:1;
+
+.log{
+    line-height: normal;
+}
+
+.logo{
+    width: 151px*@include;
+    height: 50px*@include;
+   margin-top: 20px*@include;
+   line-height: normal;
+}
+
+.header{
+    width: 100%;
+    height: 91px*@include;
+    line-height: 91px*@include;
+}
+
+.row{
+    width: 1200px*@include;
+    margin: 0 auto;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.chinese{
+    font-size:22px*@include;
+font-family:MicrosoftYaHei;
+font-weight:400;
+color:rgba(79,79,79,1);
+margin-right: 23px*@include;
+cursor: pointer;
+}
+
+.lang-active{
+    color:rgba(39,85,162,1) !important;
+}
+
+.English{
+    font-size:22px*@include;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    
+    margin-left: 23px*@include;
+    cursor: pointer;
+}
+
+.navbar{
+    width: 100%;
+    height:62px*@include;
+    background:rgba(41,79,144,1);
+    a{
+        font-size:16px*@include;
+        font-family:MicrosoftYaHei;
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        padding: 0 20px*@include;
+        height: 61px*@include;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        word-break:break-all;
+    }
+}
+
+.active{
+    background-color: #15428D;
+}
+
+.li-item{
+    display: none;
+}
+
+.show{
+    position: absolute;
+}
+
+
+.li-mr{
+    cursor: pointer;
+    position: relative;
+    z-index: 9999;
+    padding: 0 20px*@include;
+    text-align: center;
+    line-height: 61px*@include;
+    height: 61px*@include;
+    background-color: #15428D;
+    color:rgba(255,255,255,1); 
+    font-size:16px*@include;
+}
+
+.mobile_header{
+    display: none;
+}
+
+
+
+@media only screen and (min-width: 750px) and (max-width: 1366px) {
+    @include:0.7;
+
+    .log{
+        line-height: normal;
+    }
+    
+    .logo{
+        width: 151px*@include;
+        height: 50px*@include;
+       margin-top: 20px*@include;
+       line-height: normal;
+    }
+    
+    .header{
+        width: 100%;
+        height: 91px*@include;
+        line-height: 91px*@include;
+    }
+    
+    .row{
+        width: 1200px*@include;
+        margin: 0 auto;
+    }
+    
+    .left{
+        float: left;
+    }
+    
+    .right{
+        float: right;
+    }
+    
+    .chinese{
+        font-size:22px*@include;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(79,79,79,1);
+    margin-right: 23px*@include;
+    cursor: pointer;
+    }
+    
+    .lang-active{
+        color:rgba(39,85,162,1) !important;
+    }
+    
+    .English{
+        font-size:22px*@include;
+        font-family:MicrosoftYaHei;
+        font-weight:400;
+        
+        margin-left: 23px*@include;
+        cursor: pointer;
+    }
+    
+    .navbar{
+        width: 100%;
+        height:62px*@include;
+        background:rgba(41,79,144,1);
+        a{
+            font-size:16px*@include;
+            font-family:MicrosoftYaHei;
+            font-weight:400;
+            color:rgba(255,255,255,1);
+            padding: 0 20px*@include;
+            height: 61px*@include;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            word-break:break-all;
+        }
+    }
+    
+    .active{
+        background-color: #15428D;
+    }
+    
+    .li-item{
+        display: none;
+    }
+    
+    .show{
+        position: absolute;
+    }
+    
+    
+    .li-mr{
+        cursor: pointer;
+        position: relative;
+        z-index: 9999;
+        padding: 0 20px*@include;
+        text-align: center;
+        line-height: 61px*@include;
+        height: 61px*@include;
+        background-color: #15428D;
+        color:rgba(255,255,255,1);
+        font-size:16px*@include; 
+    }
+    
+    .mobile_header{
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width:0px) and (max-width: 750px) {
+    .row{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .pc_header{
+        display: none;
+    }
+    .mobile_header{
+        display: block;
+    }
+    .m-header{
+        width: 100%;
+        height: 1.386667rem;
+        img{
+            width: 2.36rem;
+            margin-top: .333333rem;
+        }
+        font-size:.4rem;
+        font-family:MicrosoftYaHei;
+        font-weight:400;
+        color:rgba(39,85,162,1);
+        line-height: 1.386667rem;
+    }
+    .prow{
+        width: 9rem;
+        margin: 0 auto;
+    }
+    .m-dd{
+        width: 3.333rem;
+        height: 1.32rem;
+        text-align: center;
+        font-size:.4rem;
+        font-family:MicrosoftYaHei;
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        background-color: #294F90;
+        line-height: 1.32rem;
+    }
+    
+    .list-mb{
+        clear: both;
+        margin-top: .266667rem;
+    }
+    .m-sl{
+        float: left;
+        width:.066667rem;
+        height:.306667rem;
+        background-color: #2755A2;
+        margin-top: .113333rem;
+    }
+    .mb-text{
+        float: left;
+        font-size:.373333rem;
+        font-family:MicrosoftYaHei;
+        font-weight:400;
+        color:rgba(127,127,127,1);
+        margin-left: .183333rem;
+    }
+    .m-nav{
+        width: 100%;
+        height: 1.32rem;
+    background-color: #294F90;
+    }
+}
+

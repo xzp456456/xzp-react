@@ -3,3 +3,23 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+
+
+
+@media only screen and (min-width: 0px) and (max-width: 750px) {
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    min-width: auto;
+  }
+}
