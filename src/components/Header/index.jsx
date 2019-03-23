@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.less'
-import 'react-flexible';
+
 import { Link } from 'react-router'
 import { postAjax } from '../../fetch'
 import * as api from '../../api'
@@ -96,9 +96,24 @@ class Header extends Component {
                         </div>
                     </div>
                     <div className="m-nav">
+                    <div className="mb-nav-an">
                         <div className="left m-dd">首页</div>
+                        <div className="xuanfu">
+                            <div className="mb-xuanfu">企业文化</div>
+                        </div>
+                    </div>
+                    <div className="mb-nav-an">
                         <div className="left m-dd">企业文化</div>
-                        <div className="left m-dd">新闻资讯 </div>
+                        <div className="xuanfu">
+                            <div className="mb-xuanfu">企业文化</div>
+                        </div>
+                    </div>
+                    <div className="mb-nav-an">
+                        <div className="left m-dd">企业新闻</div>
+                        <div className="xuanfu">
+                            <div className="mb-xuanfu">企业文化</div>
+                        </div>
+                    </div>
                     </div>
                 
                 </div>
