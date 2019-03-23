@@ -4,6 +4,7 @@ import './index.less'
 import { Link } from 'react-router'
 import { postAjax } from '../../fetch'
 import * as api from '../../api'
+import { hashHistory } from 'react-router'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionsData from '../../store/actions' 
@@ -18,7 +19,44 @@ class Header extends Component {
             lang: type
         }, () => {
             this.getNav();
-            this.props.bindAction(this.state.lang);
+           
+            let uri= hashHistory.getCurrentLocation().pathname;
+            switch(uri){
+                case '/': 
+                this.props.bindAction(this.state.lang);
+                this.props.bindcp(4,this.state.lang);
+                this.props.binddt(10,this.state.lang);
+            break;
+                case '/Classdesc':
+                this.props.bindLang(this.state.lang)
+                break;
+                case '/Culture':
+               this.props.bindCulture(this.state.lang)
+               break;
+               case '/Develop':
+               this.props.bindDevelop(this.state.lang)
+               break;
+               case '/Information':
+               this.props.bindInfo(this.state.lang)
+               break;
+               case '/NewDesc':
+               this.props.bindNewDesc(this.state.lang)
+               break;
+               case '/Patent':
+               this.props.bindPatent(this.state.lang)
+               break;
+               case '/Produce':
+               this.props.bindProduce(this.state.lang)
+               break;
+               case '/Qhse':
+               this.props.bindQhse(this.state.lang)
+               break;
+               case '/Service':
+               this.props.bindService(this.state.lang)
+               break;
+            }
+            
+            
         });
 
     }
@@ -69,6 +107,31 @@ class Header extends Component {
             }
             
         });
+        let mb_items = list.map((item, index) => {
+            if (item.pid === 0) {
+                return <div className="mb-nav-an" key={index}>
+                <div className="left m-dd">{item.cate_name}</div>
+                <div className="xuanfu">
+                </div>
+                
+            </div>
+            }
+            
+        });
+        let mb_items_c = list.map((item, index) => {
+            if (item.pid === 0) {
+                return <div className="mb-nav-an" key={index}>
+                <div className="xuanfu">
+                    {  item.ch.map((li,i)=>{
+                        return <div className="mb-xuanfu" key={i}>{li.cate_name}</div>
+                        })
+                    }
+                </div>
+                
+            </div>
+            }
+            
+        });
         return (
             <div>
                 <div className="pc_header">
@@ -92,30 +155,20 @@ class Header extends Component {
                     <div className="m-header">
                     <div className="prow">
                         <img className="left" src={require("../../img/logos.png")} alt=""/>
-                        <div className="right">中文</div>
+                            {this.state.lang=='zh'?
+                            <div className="right" onClick={this.changLang.bind(this, 'en')}>{this.state.lang=="zh"?'英文':'中文'}</div>:
+                            <div className="right" onClick={this.changLang.bind(this, 'zh')}>{this.state.lang=="zh"?'英文':'中文'}</div>}
                         </div>
                     </div>
                     <div className="m-nav">
-                    <div className="mb-nav-an">
-                        <div className="left m-dd">首页</div>
-                        <div className="xuanfu">
-                            <div className="mb-xuanfu">企业文化</div>
-                        </div>
+                    <div className="mw-mban-scroll">
+                        {mb_items}
                     </div>
-                    <div className="mb-nav-an">
-                        <div className="left m-dd">企业文化</div>
-                        <div className="xuanfu">
-                            <div className="mb-xuanfu">企业文化</div>
-                        </div>
+                   
                     </div>
-                    <div className="mb-nav-an">
-                        <div className="left m-dd">企业新闻</div>
-                        <div className="xuanfu">
-                            <div className="mb-xuanfu">企业文化</div>
-                        </div>
+                    <div>
+                        {mb_items_c}
                     </div>
-                    </div>
-                
                 </div>
             </div>
         )

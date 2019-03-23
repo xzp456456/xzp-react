@@ -13,8 +13,8 @@ class Service extends Component{
         super()
       document.title="服务介绍"
     }
-        getCulture(){
-          postAjax(api.content,{cate_id:8,lang:'zh'})
+        getCulture(lang){
+          postAjax(api.content,{cate_id:8,lang:lang})
           .then(res=>{
               console.log(res);
             this.setState({
@@ -23,7 +23,7 @@ class Service extends Component{
           })
         }
         componentWillMount(){
-          this.getCulture()
+          this.getCulture('zh')
         }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
@@ -46,7 +46,7 @@ class Service extends Component{
         })
         return(
             <div>
-                <Header />
+                <Header bindService = {this.getCulture.bind(this)} />
                 
                 <Banner children={IMG}></Banner>
                 <div className="mb-bdo"></div>

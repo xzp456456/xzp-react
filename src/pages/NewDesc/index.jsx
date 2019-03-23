@@ -13,8 +13,8 @@ class NewDesc extends Component{
         super()
       document.title="资讯详情"
     }
-    getContent(){
-        postAjax(api.view,{content_id:localStorage.getItem('content_id')})
+    getContent(lang){
+        postAjax(api.view,{content_id:localStorage.getItem('content_id'),lang:lang})
         .then(res=>{
             console.log(res);
             this.setState({
@@ -23,13 +23,13 @@ class NewDesc extends Component{
         })
     }
     componentWillMount(){
-        this.getContent()
+        this.getContent('zh')
     }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
         return(
             <div>
-                <Header />
+                <Header bindNewDesc={this.getContent.bind(this)} />
                 <Banner children={IMG}></Banner>
                 <div className="desc row" dangerouslySetInnerHTML={{__html:this.state.info}}>
                     

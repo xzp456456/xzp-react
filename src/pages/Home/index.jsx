@@ -154,7 +154,9 @@ componentWillMount(){
     return (
       <div className="Home" >
       
-          <Header bindAction={this.getStrength.bind(this)} />
+          <Header bindAction={this.getStrength.bind(this)} bindcp={this.getContent.bind(this)} 
+            binddt={this.getContentId.bind(this)}
+          />
          
             <Swiper />
           

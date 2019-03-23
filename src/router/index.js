@@ -50,7 +50,7 @@ class RouterConfig extends Component{
                     <Route path="Information" component={Information} />
                     <Route path="Details" component={Details} />
                     <Route path="Produce" component={Produce} />
-                    <Route path="NewList" component={NewDesc} />
+                    <Route path="NewDesc" component={NewDesc} />
                     <Route path="Patent" component={Patent} />
                     <Route path="Classics" component={Classics} />
                     <Route path="ClassDesc" component={Classdesc} />

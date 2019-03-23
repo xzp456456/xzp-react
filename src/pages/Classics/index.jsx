@@ -8,17 +8,19 @@ import * as api from '../../api'
 class Classics extends Component {
 
   state={
-    content:''
+    content:[],
+    lang:'zh'
   }
   constructor(){
       super()
     document.title="经典案例"
 }
     getCulture(){
-      postAjax(api.content,{cate_id:8,lang:'zh'})
+      postAjax(api.content,{cate_id:8})
       .then(res=>{
+        console.log(res)
         this.setState({
-          content:res.data.item[0]
+          content:res.data.item
         })
       })
     }
@@ -27,35 +29,20 @@ class Classics extends Component {
     }
   render() {
     const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
+    let list = this.state.content;
+    let item = list.map((item,index)=>{
+      return (
+            <div className="list-li-md" key={index}>
+                    <img src={item.file_url} alt=""/>
+                </div>
+      )
+    })
     return (
       <div className="Home" >
-          <Header />
+          <Header   />
           <Banner children={IMG}></Banner>
             <div className="item-pic-list">
-                <div className="list-li-md">
-                    <img src={require('../../img/hf.png')} alt=""/>
-                </div>
-                <div className="list-li-md">
-                    <img src={require('../../img/hf.png')} alt=""/>
-                </div>
-                <div className="list-li-md">
-                    <img src={require('../../img/hf.png')} alt=""/>
-                </div>
-                <div className="list-li-md">
-                    <img src={require('../../img/hf.png')} alt=""/>
-                </div>
-                <div className="list-li-md">
-                    <img src={require('../../img/hf.png')} alt=""/>
-                </div>
-                <div className="list-li-md">
-                    <img src={require('../../img/hf.png')} alt=""/>
-                </div>
-                <div className="list-li-md">
-                    <img src={require('../../img/hf.png')} alt=""/>
-                </div>
-                <div className="list-li-md">
-                    <img src={require('../../img/hf.png')} alt=""/>
-                </div>
+                {item}
             </div>
           <div className="bom"></div>
           <Bottom />

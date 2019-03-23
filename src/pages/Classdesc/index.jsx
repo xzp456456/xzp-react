@@ -7,14 +7,15 @@ import { postAjax } from '../../fetch'
 import * as api from '../../api'
 class Classdesc extends Component{
     state={
-        info:''
+        info:'',
+        lang:'zh'
     }
     constructor(){
         super()
       document.title="资讯详情"
     }
-    getContent(){
-        postAjax(api.view,{content_id:localStorage.getItem('content_id')})
+    getContent(lang){
+        postAjax(api.view,{content_id:localStorage.getItem('content_id'),lang:lang})
         .then(res=>{
             console.log(res);
             this.setState({
@@ -23,13 +24,13 @@ class Classdesc extends Component{
         })
     }
     componentWillMount(){
-        this.getContent()
+        this.getContent(this.state.lang)
     }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
         return(
             <div>
-                <Header />
+                <Header bindLang={this.getContent.bind(this)} />
                 <Banner children={IMG}></Banner>
                 <div className="desc row" dangerouslySetInnerHTML={{__html:this.state.info}}>
                     

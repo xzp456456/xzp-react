@@ -14,8 +14,8 @@ class Information extends Component{
     super()
   document.title="资讯"
 }
-    getContent(){
-      postAjax(api.content,{content_type:3})
+    getContent(lang){
+      postAjax(api.content,{content_type:3,lang:lang})
       .then(res=>{
         this.setState({
           list:res.data.item
@@ -24,10 +24,10 @@ class Information extends Component{
     }
     navgateTo(id){
       localStorage.setItem('content_id',id);
-      hashHistory.push('/NewList');
+      hashHistory.push('/NewDesc');
     }
     componentWillMount(){
-      this.getContent();
+      this.getContent('zh');
     }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
@@ -53,7 +53,7 @@ class Information extends Component{
         })
         return(
             <div>
-                <Header />
+                <Header bindInfo={this.getContent.bind(this)} />
                 <Banner children={IMG}></Banner>
                 <div className="bom"></div>
                 <div className="trends">

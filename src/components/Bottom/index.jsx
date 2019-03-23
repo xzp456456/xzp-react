@@ -34,6 +34,12 @@ class Bottom extends Component {
           <p key={index}>{this.state.listName[index]}：{item.value}</p>
         )
       })
+   
+      let mb_item = list.map((item,index)=>{
+        return (
+          <div key={index}>{this.state.listName[index]}：{item.value}</div>
+        )
+      })
     return (
       <div>
       <div className="footer">
@@ -66,10 +72,7 @@ class Bottom extends Component {
             <div className="mkdes">
               <img className="left inds-mb" src={require('../../img/sa.png')} alt=""/>
               <div className="mb-line">
-                <div>地址：xxxxxxxxxxxxxxxxxxxxx</div>
-                <div>地址：xxxxxxxxxxxxxxxxxxxxx</div>
-                <div>地址：xxxxxxxxxxxxxxxxxxxxx</div>
-                <div>地址：xxxxxxxxxxxxxxxxxxxxx</div>
+                {mb_item}
               </div>
             </div>
             <div className="bom-mb"></div>

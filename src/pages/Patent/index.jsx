@@ -42,8 +42,8 @@ class Patent extends Component{
             })  
         })  
     }
-    getContent(){
-        postAjax(api.content,{content_type:5})
+    getContent(lang){
+        postAjax(api.content,{content_type:5,lang:lang})
         .then(res=>{
             console.log(res);
             this.setState({
@@ -53,7 +53,7 @@ class Patent extends Component{
     }
     componentDidMount(){
         this.linePlay();
-        this.getContent()
+        this.getContent('zh')
     }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
@@ -74,7 +74,7 @@ class Patent extends Component{
         })
         return(
             <div>
-                <Header />
+                <Header bindPatent = {this.getContent.bind(this)} />
                 <Banner children={IMG}></Banner>
                     <div className="video">
                         <video id="video" onClick={this.endVideo.bind(this)}  src="http://ips.ifeng.com/video19.ifeng.com/video09/2019/02/13/p10044616-102-009-151925.mp4?vid=bf723287-50fe-4733-b60d-c6025ad8cf11&uid=1YMvjn&from=v_Free&pver=vHTML5Player_v2.0.0&sver=&se=农权律师&cat=55-56&ptype=55&platform=pc&sourceType=h5&dt=1550042333000&gid=kUwt0WlHwf0y&sign=bfdaba846a3a750a57795d01723dbce4&tm=1551687089461">

@@ -14,8 +14,8 @@ class QHSE extends Component{
         super()
       document.title="QHSE"
     }
-        getCulture(){
-          postAjax(api.content,{cate_id:8,lang:'zh'})
+        getCulture(lang){
+          postAjax(api.content,{cate_id:8,lang:lang})
           .then(res=>{
             this.setState({
               content:res.data.item[0]
@@ -23,13 +23,13 @@ class QHSE extends Component{
           })
         }
         componentWillMount(){
-          this.getCulture()
+          this.getCulture('zh')
         }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
         return(
             <div>
-                <Header />
+                <Header bindQhse = {this.getCulture.bind(this)} />
                 <Banner children={IMG}></Banner>
                 <div className="row" dangerouslySetInnerHTML={{__html:this.state.content.content}}>
               
