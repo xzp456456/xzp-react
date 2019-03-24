@@ -3,6 +3,10 @@ import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import Bottom from '../../components/Bottom'
 import './index.less'
+import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
+import 'three';
+import PhotoSphereViewer from 'photo-sphere-viewer'
+
 import { postAjax } from '../../fetch';
 import * as api from '../../api'
 class Produce extends Component{
@@ -53,6 +57,14 @@ class Produce extends Component{
     componentDidMount(){
         this.linePlay();
         this.getContent('zh')
+        // var viewer = new PhotoSphereViewer({
+        //     container: 'viewer',
+        //     panorama: require('../../img/fv.png'),
+        //     size:{
+        //         width:580,
+        //         height:300
+        //     }
+        // })
     }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
@@ -84,6 +96,7 @@ class Produce extends Component{
                         {item}
                     </div>
                 <div className="bom"></div>
+                <div id="viewer"></div>
                 <Bottom />
             </div>
             
