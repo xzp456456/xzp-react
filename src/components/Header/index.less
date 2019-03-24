@@ -207,6 +207,9 @@ cursor: pointer;
 }
 
 @media only screen and (min-width:0px) and (max-width: 750px) {
+    .hide-mb{
+        display: none;
+    }
     .row{
         width: 90%;
         margin: 0 auto;
@@ -282,23 +285,26 @@ cursor: pointer;
     }
     .xuanfu{
         position: absolute;
-        
-        width: 3.333rem;
+         
+        width: 100%;
 
     }
     .mb-xuanfu{
         text-overflow: ellipsis;
         overflow: hidden;
+        padding-left:10%;
         white-space: nowrap;
-        width: 3.333rem;
+        width: 90%;
         height: 1.32rem;
-        text-align: center;
+        text-align: left;
         font-size: 0.4rem;
+       
         font-family: MicrosoftYaHei;
         font-weight: 400;
         color: #ffffff;
         background-color: #294F90;
         line-height: 1.32rem;
+        border-top:1px solid white; 
     }
 
     .mb-nav-an{

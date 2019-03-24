@@ -12,7 +12,8 @@ class Header extends Component {
     state = {
         lang: 'zh',
         list: [],
-        index:''
+        index:'',
+        nav_or:''
     }
     changLang(type) {
         this.setState({
@@ -93,8 +94,14 @@ class Header extends Component {
             index:index
         })
     }
+    mBchangeTab(index){
+        this.setState({
+            nav_or:index
+        })
+    }
     render() {
-        var list = this.state.list;
+        var list = this.state.list
+        //var list = [{pid:0,cate_name:'qqq',ch:[{cate_name:'qqqs'},{cate_name:'牛逼'}]},{pid:0,cate_name:'人',ch:[{cate_name:'牛是'},{cate_name:'qqqs'}]},{pid:0,cate_name:'qqq',ch:[{cate_name:'qqqs'},{cate_name:'qqqs'}]},{pid:0,cate_name:'qqq',ch:[{cate_name:'qqqs'},{cate_name:'qqqs'}]},{pid:0,cate_name:'bbb',ch:[{cate_name:'qqqsqqq'}]}];
         let items = list.map((item, index) => {
             if (item.pid === 0) {
                 return <div className="left" key={index}><a className={index==this.state.index?"active":""}  href="#" onClick={this.changTab.bind(this,index)}>{item.cate_name}</a>
@@ -109,7 +116,7 @@ class Header extends Component {
         });
         let mb_items = list.map((item, index) => {
             if (item.pid === 0) {
-                return <div className="mb-nav-an" key={index}>
+                return <div className="mb-nav-an" onClick={this.mBchangeTab.bind(this,index)} key={index}>
                 <div className="left m-dd">{item.cate_name}</div>
                 <div className="xuanfu">
                 </div>
@@ -120,7 +127,7 @@ class Header extends Component {
         });
         let mb_items_c = list.map((item, index) => {
             if (item.pid === 0) {
-                return <div className="mb-nav-an" key={index}>
+                return <div className={this.state.nav_or===index?'mb-nav-an-b':'mb-nav-an-b hide-mb'} key={index}>
                 <div className="xuanfu">
                     {  item.ch.map((li,i)=>{
                         return <div className="mb-xuanfu" key={i}>{li.cate_name}</div>
