@@ -30,7 +30,7 @@ class NewDesc extends Component{
         return(
             <div>
                 <Header bindNewDesc={this.getContent.bind(this)} />
-                <Banner children={IMG}></Banner>
+                {/* <Banner children={IMG}></Banner> */}
                 <div className="desc row" dangerouslySetInnerHTML={{__html:this.state.info}}>
                     
                 </div>

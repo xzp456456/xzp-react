@@ -11,3 +11,5 @@ export const content = 'api/content/index';
 export const feedback = 'api/feedback/add';
 
 export const view = 'api/content/view';
+
+export const  getPvByIp = 'api/index/getPvByIp'

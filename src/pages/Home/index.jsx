@@ -29,6 +29,12 @@ class Home extends Component {
         })
     })
   }
+  getnum(){
+    postAjax(api.getPvByIp,{})
+    .then(res=>{
+      console.log(res)
+    })
+  }
   getContentId(cate_id,lang){
     postAjax(api.content,{lang:lang,cate_id:cate_id})
     .then(res=>{
@@ -51,6 +57,7 @@ componentWillMount(){
   this.getContent(4,'zh');
   this.getContent(6,'zh');
   this.getContentId(10,'zh');
+  this.getnum();
 }
   render() {
     //实力展示

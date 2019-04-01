@@ -94,6 +94,8 @@ cursor: pointer;
     background-color: #15428D;
     color:rgba(255,255,255,1); 
     font-size:16px*@include;
+    display: block !important;
+    clear: both;
 }
 
 .mobile_header{
@@ -207,8 +209,10 @@ cursor: pointer;
 }
 
 @media only screen and (min-width:0px) and (max-width: 750px) {
+
     .hide-mb{
         display: none;
+        
     }
     .row{
         width: 90%;
@@ -277,40 +281,53 @@ cursor: pointer;
         overflow: scroll;
     }
     .mw-mban-scroll{
-        width: 200%;
+        width: 240%;
         
     }
+
+a{
+    text-decoration:none;
+}
+
     ::-webkit-scrollbar {
         display: none;
     }
     .xuanfu{
         position: absolute;
-         
+         z-index: 999999;
         width: 100%;
-
+        
+        
+    }
+    .mb-nav-an-b{
+        transition: width 2s, height 2s, transform 2s;
     }
     .mb-xuanfu{
+        
         text-overflow: ellipsis;
         overflow: hidden;
         padding-left:10%;
         white-space: nowrap;
         width: 90%;
+        background: rgba(41, 79, 144,0.9);
         height: 1.32rem;
         text-align: left;
         font-size: 0.4rem;
-       
+       cursor: pointer;
         font-family: MicrosoftYaHei;
         font-weight: 400;
         color: #ffffff;
-        background-color: #294F90;
         line-height: 1.32rem;
         border-top:1px solid white; 
+        display: block !important;
     }
 
     .mb-nav-an{
         width: 3.333rem;
         float: left;
         position: relative;
+        cursor: pointer;
     }
+    
 }
 

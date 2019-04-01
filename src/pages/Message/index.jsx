@@ -7,7 +7,6 @@ import { postAjax } from '../../fetch';
 import * as api from '../../api'
 class Message extends Component{
 state={
-     
         realname:'',
         phone:'',
         email:'',
@@ -39,7 +38,7 @@ state={
         return(
             <div>
                 <Header />
-                <Banner children={IMG}></Banner>
+                {/* <Banner children={IMG}></Banner> */}
                 <div className="s-title pc">
                     给我留言
                 </div>
@@ -59,11 +58,11 @@ state={
                     </div>
                     <div className="input">
                         <span className="pc">邮箱：</span>
-                        <input placeholder="请填写您的姓名" onChange={this.getInfo.bind(this,'email')} type="text"/>
+                        <input placeholder="请填写您的邮箱" onChange={this.getInfo.bind(this,'email')} type="text"/>
                     </div>
                     <div className="input">
                         <span className="pc">电话：</span>
-                        <input placeholder="请填写您的姓名" onChange={this.getInfo.bind(this,'phone')} type="text"/>
+                        <input placeholder="请填写您的电话号码"     onChange={this.getInfo.bind(this,'phone')} type="text"/>
                     </div>
                 </div>
                 <div className="liuyanban">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import asyncComponent from './AsyncComponent'
 import 'react-flexible';
-import { Router, Route, IndexRoute, hashHistory,browserHistory } from 'react-router';
+import { Router, Route, IndexRoute,browserHistory } from 'react-router';
 import App from '../App.jsx';
 //const App = asyncComponent(() => import('../App.jsx'))
 import Home from '../pages/Home/index.jsx'
@@ -18,7 +18,7 @@ import NewDesc from '../pages/NewDesc'
 import Patent from '../pages/Patent'
 import Classics from '../pages/Classics'
 import Classdesc from '../pages/Classdesc'
-
+import Trends from '../pages/Trends'
 
 // const NewDesc = asyncComponent(() => import('../pages/NewDesc'))
 // const Patent = asyncComponent(() => import('../pages/Patent'))
@@ -37,7 +37,7 @@ import Classdesc from '../pages/Classdesc'
 class RouterConfig extends Component{
     render(){
         return(
-            <Router history={hashHistory}>
+            <Router history={browserHistory}>
                 <Route  path="/" component={App} >
                     <IndexRoute  component={Home} />
                     <Route path="/"  component={Home} />
@@ -45,8 +45,8 @@ class RouterConfig extends Component{
                     <Route path="Culture" component={Culture} />
                     <Route path="Develop" component={Develop} />
                     <Route path="Qhse" component={Qhse} />
-                    <Route path="Service" component={Service} />
-                    <Route path="Message" component={Message} />
+                    <Route path="Services" component={Service} />
+                    <Route path="Messages" component={Message} />
                     <Route path="Information" component={Information} />
                     <Route path="Details" component={Details} />
                     <Route path="Produce" component={Produce} />
@@ -54,6 +54,7 @@ class RouterConfig extends Component{
                     <Route path="Patent" component={Patent} />
                     <Route path="Classics" component={Classics} />
                     <Route path="ClassDesc" component={Classdesc} />
+                    <Route path="Trends" component={Trends} />
                 </Route>    
             </Router>
         )

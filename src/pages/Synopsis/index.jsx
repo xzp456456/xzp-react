@@ -3,8 +3,24 @@ import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import Bottom from '../../components/Bottom'
 import './index.less'
-
+import { postAjax } from '../../fetch'
+import * as api from '../../api'
 class Synopsis extends Component{
+    state={
+        set:''
+    }
+    getVideo(){
+        postAjax(api.setting,{})
+        .then(res=>{
+            
+            this.setState({
+                set:res.data.list[6].value
+            })
+        })
+    }
+    componentWillMount(){
+        this.getVideo()
+    }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
         return(
@@ -13,7 +29,7 @@ class Synopsis extends Component{
                 <Banner children={IMG}></Banner>
                 <div className="pc">
                 <div className="video">
-                        <video id="video"  src="http://ips.ifeng.com/video19.ifeng.com/video09/2019/02/13/p10044616-102-009-151925.mp4?vid=bf723287-50fe-4733-b60d-c6025ad8cf11&uid=1YMvjn&from=v_Free&pver=vHTML5Player_v2.0.0&sver=&se=农权律师&cat=55-56&ptype=55&platform=pc&sourceType=h5&dt=1550042333000&gid=kUwt0WlHwf0y&sign=bfdaba846a3a750a57795d01723dbce4&tm=1551687089461">
+                        <video id="video"  src={this.state.set}>
                         </video>
                         <div className="play" ><img src={require("../../img/tw.png")} alt=""/></div>
                     </div>
@@ -53,7 +69,7 @@ class Synopsis extends Component{
                   </div>
                   <div className="">
                   <div className="mb-video">
-                        <video id="mb-video"  src="http://ips.ifeng.com/video19.ifeng.com/video09/2019/02/13/p10044616-102-009-151925.mp4?vid=bf723287-50fe-4733-b60d-c6025ad8cf11&uid=1YMvjn&from=v_Free&pver=vHTML5Player_v2.0.0&sver=&se=农权律师&cat=55-56&ptype=55&platform=pc&sourceType=h5&dt=1550042333000&gid=kUwt0WlHwf0y&sign=bfdaba846a3a750a57795d01723dbce4&tm=1551687089461">
+                        <video id="mb-video"  src={this.state.set}>
                         </video>
                         <div className="mb-play" ><img src={require("../../img/tw.png")} alt=""/></div>
                     </div>

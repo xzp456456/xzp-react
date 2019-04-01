@@ -6,16 +6,16 @@ import './index.less'
 import { postAjax } from '../../fetch'
 import * as api from '../../api'
 import {browserHistory} from 'react-router'
-class Information extends Component{
+class Trends extends Component{
   state = {
     list:[]
   }
   constructor(){
     super()
-  document.title="资讯"
+  document.title="企业动态"
 }
     getContent(lang){
-      postAjax(api.content,{content_type:3,lang:lang})
+      postAjax(api.content,{cate_id:10,lang:lang})
       .then(res=>{
         this.setState({
           list:res.data.item
@@ -53,7 +53,7 @@ class Information extends Component{
         })
         return(
             <div>
-                <Header bindInfo={this.getContent.bind(this)} />
+                <Header bindTrends={this.getContent.bind(this)} />
                 <Banner children={IMG}></Banner>
                 <div className="bom"></div>
                 <div className="trends">
@@ -70,4 +70,4 @@ class Information extends Component{
     }
 }
 
-export default Information;
+export default Trends;

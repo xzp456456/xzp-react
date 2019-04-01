@@ -32,7 +32,7 @@ state={
         <div className="kuai-mb" key={index}><div className="xian"></div>
           <div className="msds-time">
                 <img className="sl" src={require('../../img/sl.png')} alt=""/>
-                <div className="time-text-md">{item.create_time}</div>
+                <div className="time-text-md">{item.time_str}</div>
                 </div>
                 <div className="left">
                   <img className="mb-wid" src={item.file_url} alt=""/>

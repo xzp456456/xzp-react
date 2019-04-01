@@ -12,21 +12,29 @@ const swiperOptions = {
   observeSlideChildren:true
 };
 
-const items = [{
-  image: require('../../img/banner.png'),
-  title: '图片1',
-  link: ''
-}];
+//var items = [{}];
 
 
 class Swiper extends Component {
+  state = {
+    items:[]
+  }
   getBanner() {
       
-    let data = { banner_id: 1 }
+    let data = { position_id: 1 }
     postAjax(api.banner, data)
       .then(res => {
-
         console.log(res);
+        let info = res.data;
+        var items = [];
+         info.forEach((item,index)=>{
+           
+          items.push({image:item.thumb})
+
+        })
+        this.setState({
+          items:items
+        })
       })
   }
   componentWillMount() {
@@ -37,11 +45,12 @@ class Swiper extends Component {
     return (
       <div>
       <div className="banner" >
-        <ReactSwiper swiperOptions={swiperOptions} items={items}
+        <ReactSwiper swiperOptions={swiperOptions} items={this.state.items}
           className="swiper-example" />
       </div>
       <div className="m-banner">
-              <img src={require('../../img/banner.png')} alt=""/>
+      <ReactSwiper swiperOptions={swiperOptions} items={this.state.items}
+          className="swiper-example" />
        </div>
       </div>
     );

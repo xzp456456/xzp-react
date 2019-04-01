@@ -4,7 +4,7 @@ import './index.less'
 import { Link } from 'react-router'
 import { postAjax } from '../../fetch'
 import * as api from '../../api'
-import { hashHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionsData from '../../store/actions' 
@@ -16,12 +16,13 @@ class Header extends Component {
         nav_or:''
     }
     changLang(type) {
+        localStorage.setItem('type',type)
         this.setState({
             lang: type
         }, () => {
             this.getNav();
            
-            let uri= hashHistory.getCurrentLocation().pathname;
+            let uri= browserHistory.getCurrentLocation().pathname;
             switch(uri){
                 case '/': 
                 this.props.bindAction(this.state.lang);
@@ -55,6 +56,9 @@ class Header extends Component {
                case '/Service':
                this.props.bindService(this.state.lang)
                break;
+               case '/Trends':
+               this.props.bindTrends(this.state.lang)
+               break;
             }
             
             
@@ -87,6 +91,7 @@ class Header extends Component {
             })
     }
     componentWillMount() {
+        this.changLang(localStorage.getItem('type'))
         this.getNav();
     }
     changTab(index){
@@ -104,10 +109,10 @@ class Header extends Component {
         //var list = [{pid:0,cate_name:'qqq',ch:[{cate_name:'qqqs'},{cate_name:'牛逼'}]},{pid:0,cate_name:'人',ch:[{cate_name:'牛是'},{cate_name:'qqqs'}]},{pid:0,cate_name:'qqq',ch:[{cate_name:'qqqs'},{cate_name:'qqqs'}]},{pid:0,cate_name:'qqq',ch:[{cate_name:'qqqs'},{cate_name:'qqqs'}]},{pid:0,cate_name:'bbb',ch:[{cate_name:'qqqsqqq'}]}];
         let items = list.map((item, index) => {
             if (item.pid === 0) {
-                return <div className="left" key={index}><a className={index==this.state.index?"active":""}  href="#" onClick={this.changTab.bind(this,index)}>{item.cate_name}</a>
+                return <div className="left" key={index}><Link className={index==this.state.index?"active":""}  to={item.cate_url} onClick={this.changTab.bind(this,index)}>{item.cate_name}</Link>
                         <div key={index+1} className={index==this.state.index?"show":"li-item"}>
                             {  item.ch.map((li,i)=>{
-                                    return <div key={i} className="li-mr">{li.cate_name}</div> 
+                                    return <Link key={i} className="li-mr" to={li.cate_url}>{li.cate_name}</Link>
                             }) }
                         </div>
                         </div>
@@ -117,7 +122,7 @@ class Header extends Component {
         let mb_items = list.map((item, index) => {
             if (item.pid === 0) {
                 return <div className="mb-nav-an" onClick={this.mBchangeTab.bind(this,index)} key={index}>
-                <div className="left m-dd">{item.cate_name}</div>
+                <Link className="left m-dd" to={item.cate_url}>{item.cate_name}</Link>
                 <div className="xuanfu">
                 </div>
                 
@@ -130,7 +135,7 @@ class Header extends Component {
                 return <div className={this.state.nav_or===index?'mb-nav-an-b':'mb-nav-an-b hide-mb'} key={index}>
                 <div className="xuanfu">
                     {  item.ch.map((li,i)=>{
-                        return <div className="mb-xuanfu" key={i}>{li.cate_name}</div>
+                        return <Link className="mb-xuanfu" key={i} to={li.cate_url}>{li.cate_name}</Link>
                         })
                     }
                 </div>

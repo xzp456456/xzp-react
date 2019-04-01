@@ -40,7 +40,7 @@ class Classics extends Component {
     return (
       <div className="Home" >
           <Header   />
-          <Banner children={IMG}></Banner>
+          {/* <Banner children={IMG}></Banner> */}
             <div className="item-pic-list">
                 {item}
             </div>

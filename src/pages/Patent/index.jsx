@@ -8,7 +8,8 @@ import * as api from '../../api'
 class Patent extends Component{
     state = {
         hide:"block",
-        info:[]
+        info:[],
+        video:''
     }
     constructor(){
         super()
@@ -51,8 +52,17 @@ class Patent extends Component{
             })
         })
     }
+    getVideo(){
+        postAjax(api.setting,{})
+        .then(res=>{
+            this.setState({
+                video:res.data.list[6].value
+            })
+        })
+    }
     componentDidMount(){
         this.linePlay();
+        this.getVideo()
         this.getContent('zh')
     }
     render(){
@@ -77,7 +87,7 @@ class Patent extends Component{
                 <Header bindPatent = {this.getContent.bind(this)} />
                 <Banner children={IMG}></Banner>
                     <div className="video">
-                        <video id="video" onClick={this.endVideo.bind(this)}  src="http://ips.ifeng.com/video19.ifeng.com/video09/2019/02/13/p10044616-102-009-151925.mp4?vid=bf723287-50fe-4733-b60d-c6025ad8cf11&uid=1YMvjn&from=v_Free&pver=vHTML5Player_v2.0.0&sver=&se=农权律师&cat=55-56&ptype=55&platform=pc&sourceType=h5&dt=1550042333000&gid=kUwt0WlHwf0y&sign=bfdaba846a3a750a57795d01723dbce4&tm=1551687089461">
+                        <video id="video" onClick={this.endVideo.bind(this)}  src={this.state.video}>
                         </video>
                         <div className="play" onClick={this.playVideo.bind(this)} style={{display:this.state.hide}}><img src={require("../../img/tw.png")} alt=""/></div>
                     </div>

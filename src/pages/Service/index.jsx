@@ -48,7 +48,7 @@ class Service extends Component{
             <div>
                 <Header bindService = {this.getCulture.bind(this)} />
                 
-                <Banner children={IMG}></Banner>
+                {/* <Banner children={IMG}></Banner> */}
                 <div className="mb-bdo"></div>
                 <div className="sach">
                 
