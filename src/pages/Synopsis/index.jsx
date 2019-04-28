@@ -2,12 +2,68 @@ import React,{Component} from 'react';
 import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import Bottom from '../../components/Bottom'
+import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
+import 'three';
+import $ from 'jquery'
+import PhotoSphereViewer from 'photo-sphere-viewer'
 import './index.less'
 import { postAjax } from '../../fetch'
 import * as api from '../../api'
+import {browserHistory} from 'react-router'
 class Synopsis extends Component{
     state={
-        set:''
+        set:'',
+        info:[{},{}],
+        desc:[{},{}],
+        hide:"block",
+        video:'',
+        title:''
+    }
+    constructor(){
+        super()
+    }
+    playVideo(){
+        var playBtn = document.getElementById('video');
+        var mplayBtn = document.getElementById('mb-video');
+        playBtn.play();
+        mplayBtn.play();
+        this.setState({
+            hide:"none"
+        })
+    }
+    endVideo(){
+        var playBtn = document.getElementById('video');
+        var mplayBtn = document.getElementById('mb-video');
+        playBtn.pause();
+        mplayBtn.pause();
+        this.setState({
+            hide:"block"
+        })
+    }
+    linePlay(){
+        var that = this;
+        var playBtn = document.getElementById('video');
+        var mplayBtn = document.getElementById('mb-video');
+        playBtn.addEventListener('play',function(){  
+            that.setState({
+                hide:"none"
+            })     
+        });  
+        playBtn.addEventListener('pause',function(){  
+            that.setState({
+                hide:"block"
+            })  
+        }) 
+        mplayBtn.addEventListener('play',function(){  
+            that.setState({
+                hide:"none"
+            })     
+        });  
+        mplayBtn.addEventListener('pause',function(){  
+            that.setState({
+                hide:"block"
+            })  
+        })   
     }
     getVideo(){
         postAjax(api.setting,{})
@@ -18,86 +74,215 @@ class Synopsis extends Component{
             })
         })
     }
+    getConnent(lang){
+        postAjax(api.content,{cate_id:9,})
+        .then(res=>{
+            
+            this.setState({
+                desc:res.data.item
+            })
+        })
+    }
     componentWillMount(){
         this.getVideo()
+        
+    }
+    getname(){
+        postAjax(api.columnName,{lang:localStorage.getItem('type')})
+        .then(res=>{
+            this.setState({
+                title:res.data
+            })
+        })
+    }
+      
+  
+    getAlo(id){
+        var that = this;
+        postAjax(api.Pano,{})
+        .then(res=>{
+            this.setState({
+                info:res.data.data
+            },()=>{
+                if(id<0){
+                    id=0
+                }
+               if(id>parseInt(res.data.data.total)-1){
+                id = 0
+               }
+               console.log(id)
+                var width = $(width).width();
+                var height = $(window).height();
+                var that = this;
+                
+                var url = that.state.info[id].file_url;
+              
+                var viewer = new PhotoSphereViewer({
+                    container: 'viewer',
+                    panorama:url,
+                    autoload:false,
+                    size:{
+                        width:width,
+                        height:height
+                    },
+                    navbar:false,
+                    markers:[
+                        {
+                            id:'image',
+                            image:require('../../img/e.png'),
+                            width:35,
+                            height:35,
+                            longitude: that.state.info[id].go_coordinates.go_lon,
+                            latitude: that.state.info[id].go_coordinates.go_lat,
+                            anchor:'bottom center',
+                            tooltip:'雕像',
+                        },
+                        {
+                            id:'image1',
+                            image:require('../../img/e.png'),
+                            width:35,
+                            height:35,
+                            longitude: this.state.info[id].back_coordinates.back_lon,
+                            latitude:this.state.info[id].back_coordinates.back_lat,
+                            anchor:'bottom center',
+                            tooltip:'雕像',
+                        }
+                    ],
+                })
+                localStorage.setItem('vid',id);
+            })
+        })
+    }
+   
+    componentDidMount(){
+        this.getname()
+        this.linePlay()
+        this.getConnent(localStorage.getItem('type'))
+        var that = this;
+        postAjax(api.Pano,{})
+        .then(res=>{
+            this.setState({
+                info:res.data.data
+            },()=>{
+               
+              
+                var width = $(width).width();
+                var height = $(window).height();
+                var that = this;
+                
+                var url = that.state.info[0].file_url;
+              
+                var viewer = new PhotoSphereViewer({
+                    container: 'viewer',
+                    panorama:url,
+                    autoload:false,
+                    size:{
+                        width:width,
+                        height:600
+                    },
+                    navbar:false
+                })
+                var viewer1 = new PhotoSphereViewer({
+                    container: 'viewer1',
+                    panorama:url,
+                    autoload:false,
+                    size:{
+                        width:width,
+                        height:220
+                    },
+                    navbar:false
+                  
+                })
+                viewer.on('click',function(){
+                    browserHistory.push('/allView')
+                })
+                viewer1.on('click',function(){
+                    browserHistory.push('/allView')
+                })
+            })
+        })
+        
+        
+                
+    
     }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
+        var list = this.state.desc;
+        var content1 = '';
+        var content2 = '';
+        var title = ""
+        list.forEach((item,index)=>{
+            if(item.profile=='profile2'){
+                content1 = item.content
+            }
+            if(item.profile=='profile1'){
+                content2 = item.content;
+                title = item.title
+            }
+        })
         return(
             <div>
-                <Header />
+                <Header bindSysno={this.getConnent.bind(this)} bindsame={this.getname.bind(this)} />
                 <Banner children={IMG}></Banner>
                 <div className="pc">
                 <div className="video">
-                        <video id="video"  src={this.state.set}>
+                        <video id="video" onClick={this.endVideo.bind(this)}  src={this.state.set}>
                         </video>
-                        <div className="play" ><img src={require("../../img/tw.png")} alt=""/></div>
+                        <div className="play" style={{display:this.state.hide}} onClick={this.playVideo.bind(this)}><img src={require("../../img/tw.png")} alt=""/></div>
                     </div>
                     <div className="pc-wdma">
-                    <div className="pc-tuwm">
-                        <img className="left" src={require('../../img/66.png')} alt=""/>
-                        <div className="tuwm-desc">
-                            <div className="cp-tuwen">企业图文介绍</div>
-                            <div className="tuwen-chan">
-                            111111111111111111111111111111111111111</div>
-                        </div>
+                    <div className="pc-tuwm" dangerouslySetInnerHTML={{__html:content1}}>
+                     
                     </div>
                     </div>
                     <div>
                         <div className="zhuanli">
-                        资质、专利信息
+                            {title}
                         </div>
-                        <div className="zhuanli-desc">
-                        资质：Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                         gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo 
-                        commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes
+                        <div className="zhuanli-desc" dangerouslySetInnerHTML={{__html:content2}}>
+                       
                         </div>
                     </div>
                     <div>
                     <div className="zhuanli">
-                            全景图
+                    {this.state.title.panorama}
                         </div>
                         <div className="v-chanjing">
-                            <img className="quanji-pc" src={require('../../img/66.png')} alt=""/>
+                        <div id="viewer"></div>
+                        
                         </div>
                     </div>
                 </div>
                 <div className="mobile">
                 <div className="mb-bom"></div>
                 <div className="prow">
-                        <div className="m-sl"></div><div className="mb-text">宣传视频</div>
+                        <div className="m-sl"></div><div className="mb-text">{this.state.title.video}</div>
                   </div>
                   <div className="">
                   <div className="mb-video">
-                        <video id="mb-video"  src={this.state.set}>
+                        <video id="mb-video" onClick={this.endVideo.bind(this)} src={this.state.set}>
                         </video>
-                        <div className="mb-play" ><img src={require("../../img/tw.png")} alt=""/></div>
+                        <div className="mb-play" style={{display:this.state.hide}} onClick={this.playVideo.bind(this)}><img src={require("../../img/tw.png")} alt=""/></div>
                     </div>
-                    <div className="mb-tuwen">
-                        <div className="cleye-mb">企业图文介绍</div>
-                        <div className="mb-bom"></div>
-                        <div className="mb-chanjing">
-                            <img className="quanji-mb" src={require('../../img/66.png')} alt=""/>
-                        </div>
-                        <div className="mbs-desc">
-                        tra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
-                        </div>
+                    <div className="mb-tuwen" dangerouslySetInnerHTML={{__html:content1}}>
+                      
                     </div>
                     <div className="mb-bom"></div>
                     <div className="prow clear">
-                        <div className="m-sl"></div><div className="mb-text">资质、专利信息</div>
+                        <div className="m-sl"></div><div className="mb-text">{title}</div>
                   </div>
-                  <div className="m-s-dis">
-                  s tellus mollis orci, sed rhoncus sapien nunc eget.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes
+                  <div className="m-s-dis" dangerouslySetInnerHTML={{__html:content2}}>
+             
                   </div>
                   </div>
                   <div className="mb-bom"></div>
                     <div className="prow clear">
-                        <div className="m-sl"></div><div className="mb-text">全景播放</div>
+                        <div className="m-sl"></div><div className="mb-text">{this.state.title.panorama}</div>
                   </div>
                   <div className="mb-bom"></div>
                   <div className="quanjking">
-                    <img src={require('../../img/66.png')} alt=""/>
+                  <div id="viewer1"></div>
                   </div>
                 </div>
                 <div className="mb-bom"></div>

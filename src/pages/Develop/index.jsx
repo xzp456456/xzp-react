@@ -14,7 +14,7 @@ state={
   list:[]
 }
   getContent(lang){
-    postAjax(api.content,{cate_id:7,lang:lang})
+    postAjax(api.content,{cate_id:7,})
     .then(res=>{
       this.setState({
           list:res.data.item
@@ -22,7 +22,7 @@ state={
     })
   }
   componentWillMount(){
-      this.getContent('zh')
+      this.getContent(localStorage.getItem('type'))
   }
   render() {
     

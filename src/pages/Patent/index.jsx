@@ -8,7 +8,7 @@ import * as api from '../../api'
 class Patent extends Component{
     state = {
         hide:"block",
-        info:[],
+        info:[{}],
         video:''
     }
     constructor(){
@@ -44,7 +44,7 @@ class Patent extends Component{
         })  
     }
     getContent(lang){
-        postAjax(api.content,{content_type:5,lang:lang})
+        postAjax(api.content,{content_type:5,lang:localStorage.getItem('type')})
         .then(res=>{
             console.log(res);
             this.setState({
@@ -61,9 +61,9 @@ class Patent extends Component{
         })
     }
     componentDidMount(){
-        this.linePlay();
-        this.getVideo()
-        this.getContent('zh')
+       // this.linePlay();
+      //  this.getVideo()
+        this.getContent(localStorage.getItem('type'))
     }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
@@ -86,13 +86,14 @@ class Patent extends Component{
             <div>
                 <Header bindPatent = {this.getContent.bind(this)} />
                 <Banner children={IMG}></Banner>
-                    <div className="video">
+                    {/* <div className="video">
                         <video id="video" onClick={this.endVideo.bind(this)}  src={this.state.video}>
                         </video>
                         <div className="play" onClick={this.playVideo.bind(this)} style={{display:this.state.hide}}><img src={require("../../img/tw.png")} alt=""/></div>
-                    </div>
-                    <div className="row">
-                        {item}
+                    </div> */}
+                    <div className="dom"></div>
+                    <div className="row mmode"  dangerouslySetInnerHTML={{__html:this.state.info[0].content}}>
+                        
                     </div>
                 <div className="bom"></div>
                 <Bottom />

@@ -19,7 +19,7 @@ import Patent from '../pages/Patent'
 import Classics from '../pages/Classics'
 import Classdesc from '../pages/Classdesc'
 import Trends from '../pages/Trends'
-
+import allView from '../pages/allView'
 // const NewDesc = asyncComponent(() => import('../pages/NewDesc'))
 // const Patent = asyncComponent(() => import('../pages/Patent'))
 // const Classics = asyncComponent(() => import('../pages/Classics'))
@@ -55,6 +55,7 @@ class RouterConfig extends Component{
                     <Route path="Classics" component={Classics} />
                     <Route path="ClassDesc" component={Classdesc} />
                     <Route path="Trends" component={Trends} />
+                    <Route path="allView" component={allView} />
                 </Route>    
             </Router>
         )

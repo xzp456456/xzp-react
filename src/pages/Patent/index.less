@@ -1,0 +1,45 @@
+@include:1;
+.li{
+    clear: both;
+    height: 230px*@include;
+   margin-bottom: 30px*@include;
+}
+.all{
+    width: 850px*@include;
+    height: 230px*@include;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+@media only screen and (min-width: 750px) and (max-width: 1366px) {
+    .li{
+        clear: both;
+        height: 230px*@include;
+   margin-bottom: 30px*@include;
+    }
+    .all{
+        width: 850px*@include;
+        height: 230px*@include;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 750px) {
+    .li{
+        clear: both;
+        height: 2.066667rem;
+   margin-bottom: .4rem;
+    }
+    .all{
+        width: 5.666667rem;
+        height: 1.666667rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .mmode{
+        img{
+            width: 100%;
+        }
+        word-wrap: break-word;
+    }
+}

@@ -14,7 +14,7 @@ class Service extends Component{
       document.title="服务介绍"
     }
         getCulture(lang){
-          postAjax(api.content,{cate_id:8,lang:lang})
+          postAjax(api.content,{cate_id:13,})
           .then(res=>{
               console.log(res);
             this.setState({
@@ -23,7 +23,7 @@ class Service extends Component{
           })
         }
         componentWillMount(){
-          this.getCulture('zh')
+          this.getCulture(localStorage.getItem('type'))
         }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />

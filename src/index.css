@@ -13,13 +13,19 @@ body {
 }
 
 
-
+.row img{
+  max-width: 1200px;
+}
 
 @media only screen and (min-width: 0px) and (max-width: 750px) {
+ 
   body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     min-width: auto;
   }
+  .row img{
+    max-width: 840px;
+}
 }

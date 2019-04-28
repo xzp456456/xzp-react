@@ -9,7 +9,8 @@ const swiperOptions = {
   autoplayDisableOnInteraction: false,
   observer:true,
   observeParents:true,
-  observeSlideChildren:true
+  observeSlideChildren:true,
+  showPagination:true
 };
 
 //var items = [{}];
@@ -46,12 +47,13 @@ class Swiper extends Component {
       <div>
       <div className="banner" >
         <ReactSwiper swiperOptions={swiperOptions} items={this.state.items}
-          className="swiper-example" />
+         showPagination={true} className="swiper-example" />
+          <div className="swiper-pagination"></div>
       </div>
-      <div className="m-banner">
+      {/* <div className="m-banner">
       <ReactSwiper swiperOptions={swiperOptions} items={this.state.items}
           className="swiper-example" />
-       </div>
+       </div> */}
       </div>
     );
   }

@@ -6,15 +6,27 @@ import './index.less'
 import { postAjax } from '../../fetch'
 import * as api from '../../api'
 import {browserHistory} from 'react-router'
+import chinese from '../../json/chinese.json'
+import english from '../../json/english.json'
 class Trends extends Component{
   state = {
-    list:[]
+    list:[],
+    json:''
   }
   constructor(){
     super()
   document.title="企业动态"
 }
     getContent(lang){
+      if(localStorage.getItem('type')=="en"){
+        this.setState({
+          json:english
+        })
+      }else{
+        this.setState({
+          json:chinese
+        })
+      }
       postAjax(api.content,{cate_id:10,lang:lang})
       .then(res=>{
         this.setState({
@@ -27,24 +39,24 @@ class Trends extends Component{
       browserHistory.push('/NewDesc');
     }
     componentWillMount(){
-      this.getContent('zh');
+      this.getContent(localStorage.getItem('type'));
     }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
         let content = this.state.list.map((item,index)=>{
           return (
-            <div className="trendsChild" key={index} onClick={this.navgateTo.bind(this,item.content_id)}>
+            <div className="trendsChild tchan" key={index} onClick={this.navgateTo.bind(this,item.content_id)}>
                 <div className="dist">
                   <img src={item.file_url} alt=""/>
                 </div>
                 <div className="mif">
-                  <div className="trendsTitle">{item.title}</div>
-                  <div className="trendsDest pc">
+                  <div className="trendsTitle mmqu">{item.title}</div>
+                  <div className="trendsDest">
                   {item.desc1}
                     </div>
                     <div className="time">
                       <span className="left mb-time">{item.create_time}</span>
-                      <span className="right pc"><a href="">阅读更多></a></span>
+                      <span className="right pc"><a href="javascript:void(0)" onClick={this.navgateTo.bind(this,item.content_id)}>{this.state.json.read}></a></span>
                     </div>
                 </div>
                 

@@ -1,6 +1,8 @@
 @include:1;
 
-
+.typeList{
+    cursor: pointer;
+}
 .log{
     line-height: normal;
 }
@@ -22,6 +24,7 @@
     width: 1200px*@include;
     margin: 0 auto;
 }
+
 
 .left{
     float: left;
@@ -136,6 +139,11 @@ margin-right: 23px*@include;
     width: 1200px*@include;
     margin: 0 auto;
     .li{
+        .modes{
+            width: 286px*@include;
+            height: 225px*@include;
+            float: left;
+        }
         width:1200px*@include;
         height:270px*@include;
         background:rgba(248,251,255,1);
@@ -146,7 +154,7 @@ margin-right: 23px*@include;
             width: 286px*@include;
             height: 225px*@include;
         }
-        .all{
+        .alls{
             padding-left: 26px*@include;
         }
         .biaoti{
@@ -163,6 +171,18 @@ margin-right: 23px*@include;
             font-weight:400;
             color:rgba(126,126,126,1);
             line-height:32px*@include;
+            word-wrap: break-word;
+            text-overflow:ellipsis;
+            height: 160px*@include;
+            overflow: hidden;
+           
+        }
+        .desc p{
+            word-wrap: break-word;
+            text-overflow:ellipsis;
+            width:814px*@include;
+            height: 150px*@include;
+            overflow: hidden;
         }
     }
    
@@ -170,11 +190,12 @@ margin-right: 23px*@include;
 
 
 .attion{
-    width: 1200px*@include;
+    width: 1250px*@include;
     margin: 0 auto;
     height: 387px*@include;
     .typeList{
         float: left;
+        margin-top:24px*@include;
         margin-right:24px*@include;
         img{
             width: 384px*@include;
@@ -190,6 +211,7 @@ margin-right: 23px*@include;
     width: 1230px*@include;
     margin: 0 auto;
     .trendsChild{
+        padding-bottom: 30px*@include;
         width: 380px*@include;
         .dist{
             width: 380px*@include;
@@ -392,6 +414,11 @@ overflow: hidden;
         width: 1200px*@include;
         margin: 0 auto;
         .li{
+            .modes{
+                width: 286px*@include;
+                height: 225px*@include;
+                float: left;
+            }
             width:1200px*@include;
             height:270px*@include;
             background:rgba(248,251,255,1);
@@ -402,7 +429,7 @@ overflow: hidden;
                 width: 286px*@include;
                 height: 225px*@include;
             }
-            .all{
+            .alls{
                 padding-left: 26px*@include;
             }
             .biaoti{
@@ -419,6 +446,21 @@ overflow: hidden;
                 font-weight:400;
                 color:rgba(126,126,126,1);
                 line-height:32px*@include;
+                word-wrap: break-word;
+                text-overflow:ellipsis;
+                height: 160px*@include;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+            }
+            
+            .desc p{
+                word-wrap: break-word;
+                text-overflow:ellipsis;
+                width:814px*@include;
+                height: 150px*@include;
+                overflow: hidden;
             }
         }
        
@@ -426,11 +468,12 @@ overflow: hidden;
     
     
     .attion{
-        width: 1200px*@include;
+        width: 1250px*@include;
         margin: 0 auto;
         height: 387px*@include;
         .typeList{
             float: left;
+            margin-top:24px*@include;
             margin-right:24px*@include;
             img{
                 width: 384px*@include;
@@ -590,6 +633,10 @@ overflow: hidden;
         font-family:SourceHanSansCN-Normal;
         font-weight:400;
         color:rgba(126,126,126,1);
+        word-wrap: break-word;
+        text-overflow:ellipsis;
+        overflow: hidden;
+        height: 2.26667rem;
     }
     .mode-li-lid{
         clear: both;
@@ -637,5 +684,10 @@ overflow: hidden;
         color:rgba(115,115,115,1);
         margin-top: .336667rem;
     }
-   
+   .mb-desc p{
+    word-wrap: break-word;
+    text-overflow:ellipsis;
+    height: 2rem;
+    overflow: hidden;
+   }
 }

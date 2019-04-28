@@ -15,7 +15,7 @@ class QHSE extends Component{
       document.title="QHSE"
     }
         getCulture(lang){
-          postAjax(api.content,{cate_id:8,lang:lang})
+          postAjax(api.content,{cate_id:12,})
           .then(res=>{
             this.setState({
               content:res.data.item[0]
@@ -23,7 +23,7 @@ class QHSE extends Component{
           })
         }
         componentWillMount(){
-          this.getCulture('zh')
+          this.getCulture(localStorage.getItem('type'))
         }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />

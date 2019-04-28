@@ -15,7 +15,7 @@ class Classdesc extends Component{
       document.title="资讯详情"
     }
     getContent(lang){
-        postAjax(api.view,{content_id:localStorage.getItem('content_id'),lang:lang})
+        postAjax(api.view,{content_id:localStorage.getItem('content_id'),})
         .then(res=>{
             console.log(res);
             this.setState({

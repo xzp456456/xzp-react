@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionsData from './store/actions' 
 class App extends Component {
-
+  
   render() {
     return (
       <div className="App" >

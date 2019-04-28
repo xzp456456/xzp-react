@@ -12,10 +12,22 @@
     }
 }
 
+.alle{
+    width: 850px;
+    height: 225px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 #viewer{
     
     margin: 0 auto;
     margin-bottom: 100px;
+}
+
+.dom{
+    width: 100%;
+    height: 50px*@include;
 }
 
 .play{
@@ -40,10 +52,15 @@
 
 .wds{
     width: 100%;
+    height: 100%;
 }
 
 @media only screen and (min-width: 750px) and (max-width: 1366px) {
     @include:0.7;
+    .dom{
+        width: 100%;
+        height: 50px*@include;
+    }
 .video{
     position: relative;
     width:1200px*@include;
@@ -79,6 +96,7 @@
 
 .wds{
     width: 100%;
+    height: 100%;
 }
 
 }
@@ -94,6 +112,11 @@
         width: 100%;
         height: 100%;
     }
+}
+
+.dom{
+    width: 100%;
+    height: .666667rem;
 }
 
 .play{
@@ -118,6 +141,11 @@ height:2.146667rem;
 
 .wds{
     width: 100%;
+    height: 100%;
 }
-
+.alle{
+    width: 5.666667rem;
+    height: 2.2rem;
+    overflow: hidden;
+}
 }

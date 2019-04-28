@@ -12,4 +12,8 @@ export const feedback = 'api/feedback/add';
 
 export const view = 'api/content/view';
 
-export const  getPvByIp = 'api/index/getPvByIp'
+export const  getPvByIp = 'api/index/getPvByIp';
+
+export const Pano = 'api/Pano/index';
+
+export const  columnName = 'api/Index/columnName';

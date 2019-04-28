@@ -15,7 +15,7 @@ class Information extends Component{
   document.title="资讯"
 }
     getContent(lang){
-      postAjax(api.content,{content_type:3,lang:lang})
+      postAjax(api.content,{cate_id:11,lang:lang})
       .then(res=>{
         this.setState({
           list:res.data.item
@@ -27,7 +27,7 @@ class Information extends Component{
       browserHistory.push('/NewDesc');
     }
     componentWillMount(){
-      this.getContent('zh');
+      this.getContent(localStorage.getItem('type'));
     }
     render(){
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
@@ -38,13 +38,13 @@ class Information extends Component{
                   <img src={item.file_url} alt=""/>
                 </div>
                 <div className="mif">
-                  <div className="trendsTitle">{item.title}</div>
-                  <div className="trendsDest pc">
+                  <div className="trendsTitle mwett">{item.title}</div>
+                  <div className="trendsDest">
                   {item.desc1}
                     </div>
                     <div className="time">
                       <span className="left mb-time">{item.create_time}</span>
-                      <span className="right pc"><a href="">阅读更多></a></span>
+                      <span className="right pc"><a href="javascript:void(0)">阅读更多></a></span>
                     </div>
                 </div>
                 

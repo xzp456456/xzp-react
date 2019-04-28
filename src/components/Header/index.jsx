@@ -13,21 +13,29 @@ class Header extends Component {
         lang: 'zh',
         list: [],
         index:'',
-        nav_or:''
+        nav_or:'',
+        indexor:''
+    }
+    constructor(){
+        super()
+        this.setState({
+            indexor:""
+        })
     }
     changLang(type) {
         localStorage.setItem('type',type)
         this.setState({
             lang: type
         }, () => {
+            
             this.getNav();
-           
             let uri= browserHistory.getCurrentLocation().pathname;
             switch(uri){
                 case '/': 
                 this.props.bindAction(this.state.lang);
                 this.props.bindcp(4,this.state.lang);
                 this.props.binddt(10,this.state.lang);
+                this.props.bindname()
             break;
                 case '/Classdesc':
                 this.props.bindLang(this.state.lang)
@@ -53,11 +61,22 @@ class Header extends Component {
                case '/Qhse':
                this.props.bindQhse(this.state.lang)
                break;
-               case '/Service':
+               case '/Services':
                this.props.bindService(this.state.lang)
                break;
                case '/Trends':
                this.props.bindTrends(this.state.lang)
+               break;
+               case '/Messages':
+               this.props.bindMessage(this.state.lang)
+               this.props.bindMame()
+               break;
+               case '/Classics':
+               this.props.bindCul(this.state.lang)
+               break;
+               case '/Synopsis':
+               this.props.bindSysno(this.state.lang)
+               this.props.bindsame()
                break;
             }
             
@@ -66,7 +85,7 @@ class Header extends Component {
 
     }
     getNav() {
-        postAjax(api.category, { lang: this.state.lang })
+        postAjax(api.category, { lang:localStorage.getItem('type') })
             .then(res => {
                 let item = res.data.item;
                let main = item.filter(item => {
@@ -90,18 +109,33 @@ class Header extends Component {
                
             })
     }
+    componentDidMount(){
+        this.setState({
+            indexor:''
+        })
+    }
     componentWillMount() {
+        
         this.changLang(localStorage.getItem('type'))
         this.getNav();
+        this.changTab(localStorage.getItem('index'))
     }
     changTab(index){
+        localStorage.setItem('index',index)
         this.setState({
-            index:index
+            index:localStorage.getItem('index'),
+            indexor:index
         })
     }
     mBchangeTab(index){
         this.setState({
             nav_or:index
+        })
+    }
+    hide(){
+        this.setState({
+            indexor:"",
+            nav_or:""
         })
     }
     render() {
@@ -110,9 +144,9 @@ class Header extends Component {
         let items = list.map((item, index) => {
             if (item.pid === 0) {
                 return <div className="left" key={index}><Link className={index==this.state.index?"active":""}  to={item.cate_url} onClick={this.changTab.bind(this,index)}>{item.cate_name}</Link>
-                        <div key={index+1} className={index==this.state.index?"show":"li-item"}>
+                        <div key={index+1} className={index==this.state.indexor?"show":"li-item"}>
                             {  item.ch.map((li,i)=>{
-                                    return <Link key={i} className="li-mr" to={li.cate_url}>{li.cate_name}</Link>
+                                    return <Link key={i}  className="li-mr" to={li.cate_url} onClick={this.hide.bind(this)}>{li.cate_name}</Link>
                             }) }
                         </div>
                         </div>
@@ -122,7 +156,7 @@ class Header extends Component {
         let mb_items = list.map((item, index) => {
             if (item.pid === 0) {
                 return <div className="mb-nav-an" onClick={this.mBchangeTab.bind(this,index)} key={index}>
-                <Link className="left m-dd" to={item.cate_url}>{item.cate_name}</Link>
+                <Link className="left m-dd" to={item.cate_url}><img src={require('../../img/cd.png')} alt=""/>{item.cate_name}</Link>
                 <div className="xuanfu">
                 </div>
                 
@@ -135,7 +169,7 @@ class Header extends Component {
                 return <div className={this.state.nav_or===index?'mb-nav-an-b':'mb-nav-an-b hide-mb'} key={index}>
                 <div className="xuanfu">
                     {  item.ch.map((li,i)=>{
-                        return <Link className="mb-xuanfu" key={i} to={li.cate_url}>{li.cate_name}</Link>
+                        return <Link className="mb-xuanfu" key={i} to={li.cate_url} onClick={this.hide.bind(this)}>{li.cate_name}</Link>
                         })
                     }
                 </div>
@@ -168,8 +202,8 @@ class Header extends Component {
                     <div className="prow">
                         <img className="left" src={require("../../img/logos.png")} alt=""/>
                             {this.state.lang=='zh'?
-                            <div className="right" onClick={this.changLang.bind(this, 'en')}>{this.state.lang=="zh"?'英文':'中文'}</div>:
-                            <div className="right" onClick={this.changLang.bind(this, 'zh')}>{this.state.lang=="zh"?'英文':'中文'}</div>}
+                            <div className="right" onClick={this.changLang.bind(this, 'en')}><img className="qk-m" src={require('../../img/mwm.png')} alt="" />{this.state.lang=="zh"?'英文':'中文'}</div>:
+                            <div className="right" onClick={this.changLang.bind(this, 'zh')}><img className="qk-m" src={require('../../img/mwm.png')} alt="" />{this.state.lang=="zh"?'英文':'中文'}</div>}
                         </div>
                     </div>
                     <div className="m-nav">

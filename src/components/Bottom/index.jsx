@@ -5,7 +5,7 @@ import { postAjax } from '../../fetch'
 import * as api from '../../api'
 class Bottom extends Component {
   state = {
-      list:[],
+      list:[{},{},{},{},{},{},{},{}],
       listName:[ '地址','电话','网址','邮箱']
   }
   constructor(){
@@ -16,13 +16,14 @@ class Bottom extends Component {
     postAjax(api.setting,{})
     .then(res=>{
         let data =[];
-       for(var i=0;i<4;i++){
+       for(var i=0;i<res.data.list.length;i++){
         data.push(res.data.list[i]);
        }
-      this.setState({
+       this.setState({
         list:data
       })
     })
+    
   }
   componentWillMount(){
     this.getList();
@@ -46,9 +47,12 @@ class Bottom extends Component {
       <div className="row">
       <div className="left">
       
-           <div className="pd"><img src={require("../../img/sa.png")} alt=""/></div>
+           <div className="pd"><img src={this.state.list[1].value} alt=""/></div>
            <div className="line">
-             {item}
+           <p >{this.state.listName[0]}：{this.state.list[3].value}</p>
+           <p >{this.state.listName[1]}：{this.state.list[4].value}</p>
+           <p >{this.state.listName[2]}：{this.state.list[2].value}</p>
+           <p >{this.state.listName[3]}：{this.state.list[5].value}</p>
            </div>
           </div>
      
@@ -57,7 +61,7 @@ class Bottom extends Component {
       <Map amapkey={"5d36d977b287953b8e7037325b1085bf"} center={this.mapCenter}  >
         < Marker center></Marker>
       </Map>
-      <div className="company">陕西天元石化建设工程有限公司 XXXXXXXXXXXXXXXXXXXXXXXXX</div>
+      <div className="company">{this.state.list[0].value}</div>
       </div>
       </div>
       </div>
@@ -70,14 +74,17 @@ class Bottom extends Component {
               </Map>
             </div>
             <div className="mkdes">
-              <img className="left inds-mb" src={require('../../img/sa.png')} alt=""/>
+              <img className="left inds-mb" src={this.state.list[1].value} alt=""/>
               <div className="mb-line">
-                {mb_item}
+              <div>{this.state.listName[0]}：{this.state.list[3].value}</div>
+           <div >{this.state.listName[1]}：{this.state.list[4].value}</div>
+           <div >{this.state.listName[2]}：{this.state.list[2].value}</div>
+          <div>{this.state.listName[3]}：{this.state.list[5].value}</div>
               </div>
             </div>
             <div className="bom-mb"></div>
-            <div className="mbcompany">陕西天元石化建设工程有限公司</div>
-            <div className="mbcompany">XXXXXXXXXXXXXXXXXXXXXXXXX</div>
+            <div className="mbcompany">{this.state.list[0].value}</div>
+        
           </div>
       </div>
     );
