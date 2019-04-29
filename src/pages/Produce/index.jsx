@@ -75,12 +75,12 @@ class Produce extends Component{
         const IMG = <img className={"bannerImg"} src ={ require("../../img/banner2.png")}   alt="" />
         let item = this.state.info.map((item,index)=>{
             return (
-                <div className="li" key={index}>
+                <div className="li llki" key={index}>
                 <div className="left ww"><img src={item.file_url} className="wds" alt=""/></div>
                 <div>
                 <div className="left alle">
-                <div className="biaoti">{item.title}</div>
-                <div className="desc" dangerouslySetInnerHTML={{__html:item.content}}>
+                <div className="biaoti mokbao">{item.title}</div>
+                <div className="desc desc1a" dangerouslySetInnerHTML={{__html:item.content}}>
                 </div>
                 </div>
                 

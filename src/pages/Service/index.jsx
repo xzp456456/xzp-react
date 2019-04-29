@@ -33,7 +33,7 @@ class Service extends Component{
                 <div className="li" key={index}>
                 <div className="left"><img src={item.file_url} alt=""/></div>
                 <div>
-                  <div className="left all">
+                  <div className="left all alse">
                   <div className="biaoti">{item.title}</div>
                   <div className="desc">
                     {item.desc1}

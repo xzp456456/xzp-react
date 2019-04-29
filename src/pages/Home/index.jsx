@@ -187,6 +187,7 @@ class Home extends Component {
           <div className="mb-time-li">
             {item.create_time}
           </div>
+          
         </div>
       )
     })
@@ -230,7 +231,7 @@ class Home extends Component {
             <div className="prow">
               <div className="m-sl"></div><div className="mb-text">{this.state.title.strength}</div>
             </div>
-
+          <div className="mnid"></div>
           </div>
           <div className="m-sl-list">
             {mb_item}
@@ -245,6 +246,7 @@ class Home extends Component {
             <div className="prow">
               <div className="m-sl"></div><div className="mb-text">{this.state.title.case}</div>
             </div>
+            <div className="mnid"></div>
             <div className="img-list-mb">
               {mb_lit}
 
@@ -254,6 +256,7 @@ class Home extends Component {
             <div className="prow">
               <div className="m-sl"></div><div className="mb-text">{this.state.title.company}</div>
             </div>
+            <div className="mnid"></div>
             <div className="mode-li-lid">
               {mb_lik}
             </div>
