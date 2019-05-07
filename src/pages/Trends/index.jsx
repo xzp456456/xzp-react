@@ -51,10 +51,10 @@ class Trends extends Component{
                 </div>
                 <div className="mif">
                   <div className="trendsTitle mmqu">{item.title}</div>
-                  <div className="trendsDest">
+                  <div className="trendsDest ocen">
                   {item.desc1}
                     </div>
-                    <div className="time">
+                    <div className="time moel">
                       <span className="left mb-time">{item.create_time}</span>
                       <span className="right pc"><a href="javascript:void(0)" onClick={this.navgateTo.bind(this,item.content_id)}>{this.state.json.read}></a></span>
                     </div>

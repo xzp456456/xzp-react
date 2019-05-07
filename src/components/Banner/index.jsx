@@ -11,9 +11,12 @@ class Banner extends Component{
         postAjax(api.banner,{position_id:id})
         .then(res=>{
             console.log(res)
-            this.setState({
-                image:res.data[0].thumb
-            })
+            if(res.data[0]!=undefined){
+                this.setState({
+                    image:res.data[0].thumb
+                })
+            }
+           
         
         })
     }

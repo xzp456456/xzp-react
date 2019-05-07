@@ -175,6 +175,9 @@ margin-right: 23px*@include;
             text-overflow:ellipsis;
             height: 160px*@include;
             overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
            
         }
         .desc p{
@@ -231,12 +234,16 @@ padding-bottom: 12px*@include;
 
 .trendsDest{
     width:350px*@include;
-height:86px*@include;
+height:95px*@include;
 font-size:16px*@include;
 font-family:PingFang-SC-Medium;
 font-weight:500;
 color:rgba(153,153,153,1);
-overflow: hidden;
+overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp:4;
+-webkit-box-orient: vertical;
 
 }
 
@@ -451,7 +458,7 @@ overflow: hidden;
                 height: 160px*@include;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 4;
                 overflow: hidden;
             }
             
@@ -508,12 +515,16 @@ overflow: hidden;
     
     .trendsDest{
         width:350px*@include;
-    height:86px*@include;
+    height:95px*@include;
     font-size:16px*@include;
     font-family:PingFang-SC-Medium;
     font-weight:500;
     color:rgba(153,153,153,1);
-    overflow: hidden;
+    overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp:4;
+-webkit-box-orient: vertical;
     
     }
     
@@ -626,7 +637,9 @@ overflow: hidden;
         font-weight:400;
         padding-bottom: 0.15rem;
         color:rgba(51,51,51,1);
-        
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
     }
     .mb-desc{
         font-size:.346667rem;
@@ -677,6 +690,10 @@ overflow: hidden;
         font-weight:500;
         color:rgba(35,35,38,1);
         line-height:.533333rem;
+        text-overflow:ellipsis;
+        width: 6rem;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
     .mb-time-li{

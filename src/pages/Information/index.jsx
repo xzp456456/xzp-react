@@ -39,10 +39,10 @@ class Information extends Component{
                 </div>
                 <div className="mif">
                   <div className="trendsTitle mwett">{item.title}</div>
-                  <div className="trendsDest">
+                  <div className="trendsDest injke">
                   {item.desc1}
                     </div>
-                    <div className="time">
+                    <div className="time pdm">
                       <span className="left mb-time">{item.create_time}</span>
                       <span className="right pc"><a href="javascript:void(0)">阅读更多></a></span>
                     </div>
