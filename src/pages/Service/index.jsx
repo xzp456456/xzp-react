@@ -14,7 +14,7 @@ class Service extends Component{
       document.title="服务介绍"
     }
         getCulture(lang){
-          postAjax(api.content,{cate_id:13,})
+          postAjax(api.content,{cate_id:13,lang:localStorage.getItem('type')})
           .then(res=>{
               console.log(res);
             this.setState({

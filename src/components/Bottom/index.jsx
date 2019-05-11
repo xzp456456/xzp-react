@@ -44,7 +44,7 @@ class Bottom extends Component {
     return (
       <div>
       <div className="footer">
-      <div className="row">
+      <div className="row footerwm">
       <div className="left">
       
            <div className="pd"><img src={this.state.list[1].value} alt=""/></div>

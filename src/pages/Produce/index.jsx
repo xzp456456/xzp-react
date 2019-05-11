@@ -98,7 +98,7 @@ class Produce extends Component{
                         <div className="play" onClick={this.playVideo.bind(this)} style={{display:this.state.hide}}><img src={require("../../img/tw.png")} alt=""/></div>
                     </div> */}
                     <div className="dom"></div>
-                    <div className="row">
+                    <div className="row mkwei">
                         {item}
                     </div>
                 <div className="bom"></div>

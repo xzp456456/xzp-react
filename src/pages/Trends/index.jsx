@@ -55,7 +55,7 @@ class Trends extends Component{
                   {item.desc1}
                     </div>
                     <div className="time moel">
-                      <span className="left mb-time">{item.create_time}</span>
+                      <span className="left mb-time">{item.create_time.substr(0,10)}</span>
                       <span className="right pc"><a href="javascript:void(0)" onClick={this.navgateTo.bind(this,item.content_id)}>{this.state.json.read}></a></span>
                     </div>
                 </div>

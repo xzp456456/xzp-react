@@ -14,7 +14,7 @@ state={
   list:[]
 }
   getContent(lang){
-    postAjax(api.content,{cate_id:7,})
+    postAjax(api.content,{cate_id:7,lang:lang})
     .then(res=>{
       this.setState({
           list:res.data.item

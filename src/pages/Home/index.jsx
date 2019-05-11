@@ -18,11 +18,21 @@ class Home extends Component {
     li6: [],
     lis10: [],
     title: '',
-    json:''
+    json:'',
+    content:[]
   }
   constructor() {
     super()
     document.title = "首页"
+  }
+  getCulture(){
+    postAjax(api.content,{cate_id:13,lang:localStorage.getItem('type')})
+    .then(res=>{
+        console.log(res);
+      this.setState({
+        content:res.data.item
+      })
+    })
   }
   getcolumnName() {
    
@@ -90,6 +100,7 @@ class Home extends Component {
     this.getContent(6, 'zh');
     this.getContentId(10, 'zh');
     this.getnum();
+    this.getCulture()
   }
   render() {
     //实力展示
@@ -111,7 +122,16 @@ class Home extends Component {
       )
     })
     //产品介绍
-    let li = this.state.li4;
+    let content =this.state.li4 ;
+    let contentlist = content.map((item, index) => {
+      return (
+        <div className="listuik">
+                    <div className="lj-tk">{item.title}</div>
+                    <div className="lj-tk-desc">{item.desc1}</div>
+                  </div>
+      )
+    })
+    let li = this.state.content;
     let lis = li.map((item, index) => {
       return (
         <div className="li" key={index}>
@@ -119,7 +139,8 @@ class Home extends Component {
           <div>
             <div className="left alls">
               <div className="biaoti">{item.title}</div>
-              <div className="desc" dangerouslySetInnerHTML={{ __html: item.content }}>
+              <div className="desc" >
+                {item.desc1}
               </div>
             </div>
 
@@ -169,7 +190,7 @@ class Home extends Component {
               {item.desc1}
             </div>
             <div className="time">
-              <span className="left">{item.create_time}</span>
+              <span className="left">{item.create_time.substr(0,10)}</span>
               <span className="right"><a href="javascript:void(0)" onClick={this.navgateTo.bind(this, item.content_id)}>{this.state.json.read}></a></span>
             </div>
           </div>
@@ -185,7 +206,7 @@ class Home extends Component {
             {item.desc1}
           </div>
           <div className="mb-time-li">
-            {item.create_time}
+            {item.create_time.substr(0,10)}
           </div>
           
         </div>
@@ -212,6 +233,18 @@ class Home extends Component {
             </div>
 
 
+          </div>
+          <div className="podesk">
+          <div className="infoname">
+                <img className="left kkeh" src={require('../img/kkeh.png')} alt="" srcset=""/>
+                <div className="namke left">
+                <div className="titlemake">{this.state.title.product}</div>
+                 {contentlist}
+                </div>
+              </div>
+          <div className="hqb"></div><div className="chae">
+              
+          </div>
           </div>
           <div className="title">{this.state.title.case}</div>
           <div className="attion">

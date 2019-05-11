@@ -43,7 +43,7 @@ class Information extends Component{
                   {item.desc1}
                     </div>
                     <div className="time pdm">
-                      <span className="left mb-time">{item.create_time}</span>
+                      <span className="left mb-time">{item.create_time.substr(0,10)}</span>
                       <span className="right pc"><a href="javascript:void(0)">阅读更多></a></span>
                     </div>
                 </div>

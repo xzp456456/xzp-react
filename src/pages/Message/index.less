@@ -15,7 +15,7 @@
 }
 
 .input{
-    margin-left: 83px*@include;
+    margin-left: 52px*@include;
     margin-bottom: 18px*@include;
 }
 
@@ -24,6 +24,10 @@
 font-family:MicrosoftYaHei;
 font-weight:400;
 color:rgba(0,0,0,1);
+display: block;
+float: left;
+width: 70px;
+margin-top: 10px;
 }
 
 .v-test{
@@ -35,7 +39,7 @@ color:rgba(0,0,0,1);
 }
 
 .liuyanban{
-    padding-left: 52px*@include;
+    padding-left: 21px*@include;
     textarea{
         padding: 10px*@include;
         resize: none;
@@ -48,7 +52,7 @@ color:rgba(0,0,0,1);
 }
 
 .pas{
-    width: 402px*@include;
+    width: 402px*@include !important;
     height: 169px*@include;
     position: relative;
 }
@@ -85,11 +89,14 @@ color:rgba(0,0,0,1);
 .liuyanban{
     .left{
         font-size: 16px*@include;
+        display: block;
+        width: 102px;
     }
+    
 }
 
 
-@media only screen and (min-width: 100px) and (max-width: 1366px) {
+@media only screen and (min-width: 750px) and (max-width: 1366px) {
 
     @include:0.7;
 
@@ -108,7 +115,7 @@ color:rgba(0,0,0,1);
     }
     
     .input{
-        margin-left: 83px*@include;
+        margin-left: 52px*@include;
         margin-bottom: 18px*@include;
     }
     
@@ -117,6 +124,11 @@ color:rgba(0,0,0,1);
     font-family:MicrosoftYaHei;
     font-weight:400;
     color:rgba(0,0,0,1);
+    display: block;
+    float: left;
+    width: 70px*@include;
+    margin-top: 10px*@include;
+
     }
     
     .v-test{
@@ -128,7 +140,7 @@ color:rgba(0,0,0,1);
     }
     
     .liuyanban{
-        padding-left: 52px*@include;
+        padding-left: 21px*@include;
         textarea{
             padding: 10px*@include;
             resize: none;
@@ -136,13 +148,12 @@ color:rgba(0,0,0,1);
     }
     
     .v-main{
-        clear:both;
         width: 600px*@include;
         margin: 0 auto;
     }
     
     .pas{
-        width: 402px*@include;
+        width: 402px*@include !important;
         height: 169px*@include;
         position: relative;
     }
@@ -175,16 +186,21 @@ color:rgba(0,0,0,1);
             border-radius: 5px*@include; 
         }
     }
-
+    
     .liuyanban{
         .left{
             font-size: 16px*@include;
+            display: block;
+            width: 102px*@include;
         }
+        
     }
 }
 
 @media only screen and (min-width: 0px) and (max-width: 750px) {
-
+    .pc{
+        display: none !important;
+    }
     .v-main{
         width: 90%;
         margin: 0 auto;
@@ -200,8 +216,9 @@ color:rgba(0,0,0,1);
         }
     }
     .pas{
-        width: 90%;
+        width: 90% !important;
         margin: 0 auto;
+        height: auto !important;
         clear: both;
     }
     textarea{
@@ -231,6 +248,23 @@ color:rgba(0,0,0,1);
     }
     .mb-bom-d{
         width: 100%;
+        height: 0.566667rem;
+    }
+    .btn{
+        clear: both;
+        width: 8.2rem;
         height: 1.066667rem;
+        margin: 0 auto;
+        padding-top: .533333rem;
+        button{
+            width: 8.2rem;
+            height: 1.066667rem;
+            color:white; 
+            background-color: blue;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            border-radius: .066667rem; 
+        }
     }
 }

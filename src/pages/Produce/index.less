@@ -14,15 +14,12 @@
 
 .alle{
     width: 850px;
-    height: 219px;
     text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 #viewer{
-    
     margin: 0 auto;
-    margin-bottom: 100px;
+    margin-bottom: 100px*@include;
 }
 
 .mokbao{
@@ -35,6 +32,9 @@ color:rgba(58,58,58,1);
 
 .desc1a{
     letter-spacing: 2px;
+    height: 199px*@include;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .dom{
@@ -64,6 +64,7 @@ color:rgba(58,58,58,1);
 
 .llki{
     border-bottom:1px solid  #EBECEB;
+    height: 280px !important;
 }
 
 .wds{
@@ -87,16 +88,13 @@ color:rgba(58,58,58,1);
     }
     
     .alle{
-        width: 850px*@include;
-        height: 219px*@include;
+        width: 850px@include;
         text-overflow: ellipsis;
-        overflow: hidden;
     }
     
     #viewer{
-        
         margin: 0 auto;
-        margin-bottom: 100px;
+        margin-bottom: 100px@include;
     }
     
     .mokbao{
@@ -109,6 +107,9 @@ color:rgba(58,58,58,1);
     
     .desc1a{
         letter-spacing: 2px;
+        height: 199px*@include;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
     
     .dom{
@@ -129,11 +130,18 @@ color:rgba(58,58,58,1);
             height: 100%;
         }
     }
-    
+    .mkwei{
+        width: 1100px !important;
+    }
     .ww{
         width: 307px*@include;
         height: 230px*@include;
         margin-right: 20px*@include;
+    }
+    
+    .llki{
+        border-bottom:1px solid  #EBECEB;
+        height: 280px*@include !important;
     }
     
     .wds{
