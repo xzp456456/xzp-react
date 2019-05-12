@@ -37,7 +37,7 @@ class Classics extends Component {
     let list = this.state.content;
     let item = list.map((item,index)=>{
       return (
-            <div className="list-li-md" key={index} onClick={this.navgateTo.bind(this,item.content_id)}>
+            <div className="list-li-md diskplay" key={index} onClick={this.navgateTo.bind(this,item.content_id)}>
                     <img src={item.file_url} alt=""/>
                     <div className="title-name">{item.title}</div>
                 </div>
