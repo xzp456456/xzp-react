@@ -24,7 +24,10 @@
 
 .mokbao{
     font-weight:bold !important; 
-    font-size:.333333rem;
+    font-size:20px;
+    overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
 font-family:PingFang-SC-Medium;
 font-weight:500;
 color:rgba(58,58,58,1);
@@ -35,6 +38,9 @@ color:rgba(58,58,58,1);
     height: 199px*@include;
     text-overflow: ellipsis;
     overflow: hidden;
+    line-height: 25px;
+    margin-top: 10px;
+    font-size: 18px;
 }
 
 .dom{
@@ -94,12 +100,12 @@ color:rgba(58,58,58,1);
     
     #viewer{
         margin: 0 auto;
-        margin-bottom: 100px@include;
+        margin-bottom: 100px*@include;
     }
     
     .mokbao{
         font-weight:bold !important; 
-        font-size:.333333rem;
+        font-size:20px*@include;
     font-family:PingFang-SC-Medium;
     font-weight:500;
     color:rgba(58,58,58,1);
@@ -110,6 +116,9 @@ color:rgba(58,58,58,1);
         height: 199px*@include;
         text-overflow: ellipsis;
         overflow: hidden;
+        line-height: 25px*@include;
+        margin-top: 10px*@include;
+        font-size: 18px*@include;
     }
     
     .dom{

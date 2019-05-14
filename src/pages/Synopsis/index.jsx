@@ -244,7 +244,7 @@ class Synopsis extends Component{
                        
                         </div>
                     </div>
-                    <div>
+                <div className="hidedis">
                     <div className="zhuanli">
                     {this.state.title.panorama}
                         </div>

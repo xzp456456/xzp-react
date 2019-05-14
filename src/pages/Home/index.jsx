@@ -154,7 +154,8 @@ class Home extends Component {
           <img src={item.file_url} alt="" />
           <div className="mb-mds">
             <div className="mb-title">{item.title}</div>
-            <div className="mb-desc" dangerouslySetInnerHTML={{ __html: item.content }}>
+            <div className="mb-desc">
+            {item.desc1}
             </div>
           </div>
         </div>
@@ -225,7 +226,7 @@ class Home extends Component {
           </div>
           <div className="main">
             <div className="thing">
-              <span className="chanping">{this.state.title.product}</span>
+              <span className="chanping">{this.state.title.service}</span>
               {/* <span className="jieshao">介绍</span> */}
             </div>
             <div className="sach">
@@ -236,7 +237,7 @@ class Home extends Component {
           </div>
           <div className="podesk">
           <div className="infoname">
-                <img className="left kkeh" src={require('../img/kkeh.png')} alt="" srcset=""/>
+                <img className="left kkeh" src="http://39.100.52.231/static/images/picker.png" alt="" srcset=""/>
                 <div className="namke left">
                 <div className="titlemake">{this.state.title.product}</div>
                  {contentlist}
@@ -271,7 +272,7 @@ class Home extends Component {
           </div>
           <div className="chanping">
             <div className="mb-item">
-              <div className="ml-title">{this.state.title.product}</div>
+              <div className="ml-title">{this.state.title.service}</div>
               {mb_lis}
             </div>
           </div>

@@ -73,14 +73,15 @@ state={
         })
     }
     changelang(id){
-        if(id=='zh'){
+        if(id=='en'){
+            this.setState({
+                list:['name','email','phone','content']
+            })
+        }else{
+            
             this.setState({
                 list:['姓名','邮箱', '电话','留言内容']
                
-            })
-        }else{
-            this.setState({
-                list:['name','email','phone','content']
             })
         }
         
